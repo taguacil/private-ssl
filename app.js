@@ -3,7 +3,9 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 app.get("/", (req, res) => res.type('html').send(html));
-
+app.get('/.well-known/acme-challenge/:id', function(req, res, next) {
+    res.send(req.params.id+'.'+'0GBYA_fcDgHVHE1Wo8XabhvezfwiQrQRxUxkcCjGuIU');
+});
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 server.keepAliveTimeout = 120 * 1000;
